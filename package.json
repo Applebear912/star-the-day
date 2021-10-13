@@ -1,0 +1,43 @@
+{
+  "name": "reacting-to-tasks",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "scripts": {
+    "react-dev": "webpack -d --watch",
+    "start": "nodemon server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "Tom Chandler",
+  "license": "ISC",
+  "bugs": {
+    "url": "http://www.github.com"
+  },
+  "homepage": "http://www.github.com",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "babel-polyfill": "^6.26.0",
+    "bootstrap": "^5.1.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.0",
+    "mysql": "^2.18.1",
+    "react": "^16.14.0",
+    "react-bootstrap": "^2.0.0-rc.0",
+    "react-dom": "^16.14.0",
+    "simple-netease-cloud-music": "^0.5.2",
+    "youtube-music-api": "^1.0.6"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.13.14",
+    "@babel/preset-env": "^7.13.12",
+    "@babel/preset-react": "^7.13.13",
+    "babel-loader": "^8.2.2",
+    "nodemon": "^2.0.7",
+    "path": "^0.12.7",
+    "webpack": "^4.46.0",
+    "webpack-cli": "^3.3.12"
+  }
+}
