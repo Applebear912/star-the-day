@@ -4,6 +4,8 @@ const SRC_DIR = path.join(__dirname, '/client');
 const DIST_DIR = path.join(__dirname, '/dist');
 
 module.exports = {
+  devtool: 'eval-cheap-module-source-map',
+  mode: 'development',
   entry: ['babel-polyfill', `${SRC_DIR}/index.jsx`],
   output: {
     filename: 'bundle.js',

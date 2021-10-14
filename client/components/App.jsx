@@ -1,12 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 import { API_KEY, YOUTUBE_API_KEY } from '../config/config.js';
+import { Button } from 'react-bootstrap';
+import { Container, Grid, Row, Col } from 'react-bootstrap';
 
-// import searchMusic from './searchMusic.js';
-// import Image from 'react-bootstrap/Image';
-// import Container from 'react-bootstrap/Container';
-// import Row from 'react-bootstrap/Row';
-// import Col from 'react-bootstrap/Col';
 
 
 // import Music from './Music.jsx';
@@ -26,6 +23,7 @@ class App extends React.Component {
       author: '',
       background: '',
       music: '',
+      button: 'Save Photo',
     };
   };
 
@@ -34,7 +32,7 @@ class App extends React.Component {
     // when load page, get the photo of the day from nasa API (invoke get photo method)
     this.getPhoto();
     this.getQuote();
-    // this.getMusic();
+    this.getMusic();
   }
 
   getPhoto() {
@@ -98,42 +96,61 @@ class App extends React.Component {
 
   render() {
     return (
-      <main>
-        <nav>
-          <img src='/images/logo.jpeg' alt='gif' />
-        </nav>
-        <div id='quote'> One quote for today:
-            <h4>{this.state.quote}</h4>
-            <h6>{this.state.author}</h6>
-        </div>
 
-        <div id="nasaPhoto">
-          <img src={this.state.image} />
-          <h6>{this.state.title}</h6>
-          <p>{this.state.explaination}</p>
-          <p>{this.state.date}</p>
-          <input
-            type="submit"
-            value="Save Photo"
-            onClick={() => {
-              this.savePhoto();
-            }}
-          />
-        </div>
+      <Container>
 
+        <Row>
+          <Col>
+            <img id="logo" src='/images/logo.jpeg' alt='gif' />
+          </Col>
+        </Row>
 
-        <div id='musicLogo'>
-          <p>music of the day</p>
-          <img src='/images/record_animation_800x600.gif' alt='gif' />
-          <div id='music'>
-            <iframe width="25" height="25" src="https://www.youtube.com/embed/f7SS57LFPco?autoplay=1" title="YouTube video player" frameBorder="0" allow="autoplay" allowFullScreen></iframe>
-          </div>
-        </div>
+        <Row>
+          <p id='photoTitle'> Photo Of The Day (From Nasa) </p>
+          <br></br>
+          <Col sm>
+            <div id='photoName'>{" " + this.state.title}</div>
+            <span id='photoDate'>{this.state.date}</span>
+            {/* <div>{this.state.explaination}</div> */}
+            <div>
+              <input
+                id="savePhoto"
+                type="submit"
+                value={this.state.button}
+                onClick={(e) => {
+                  this.savePhoto();
+                  this.setState({button: "saved"})
+                }}
+              />
+            </div>
+            <img id="nasaPhoto" src={this.state.image} />
+          </Col>
 
-      </main>
+          <Col sm>
+
+            <div id='musicTitle'>Music Of The Day</div>
+            <iframe id='music' width="30" height="30" src="https://www.youtube.com/embed/f7SS57LFPco?autoplay=1" title="YouTube video player" frameBorder="0" allow="autoplay" allowFullScreen></iframe>
+            <img id='musicLogo' src='/images/record_animation_800x600.gif' alt='gif' />
+
+          </Col>
+        </Row>
+
+        <Row>
+          <p id='quoteTitle'>Quote Of The Day</p>
+          <Col sm>
+            <div id='quote'>
+              <h4>{this.state.quote}</h4>
+              <h6>{this.state.author}</h6>
+            </div>
+          </Col>
+
+        </Row>
+
+      </Container>
     );
   };
 };
 
 export default App;
+
 
